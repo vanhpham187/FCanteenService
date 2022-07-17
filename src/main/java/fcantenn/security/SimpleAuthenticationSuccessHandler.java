@@ -42,7 +42,7 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
                 try {
                     session.setAttribute("role","USER");
                     session.setAttribute("userInformation",user);
-                    redirectStrategy.sendRedirect(request, response, "/home1");
+                    redirectStrategy.sendRedirect(request, response, "/userHome");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -51,7 +51,16 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
                 try {
                     session.setAttribute("role","ADMIN");
                     session.setAttribute("userInformation",user);
-                    redirectStrategy.sendRedirect(request, response, "/home2");
+                    redirectStrategy.sendRedirect(request, response, "/adminHome");
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } else if(authority.getAuthority().equals("ROLE_STAFF")){
+                try {
+                    session.setAttribute("role","STAFF");
+                    session.setAttribute("userInformation",user);
+                    redirectStrategy.sendRedirect(request, response, "/staffHome");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

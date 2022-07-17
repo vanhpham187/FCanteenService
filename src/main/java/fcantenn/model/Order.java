@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Data
 public class Order {
     @Id
@@ -24,6 +24,6 @@ public class Order {
     @Column(name = "note")
     private String note;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
     private Collection<OrderDetail> orderDetails;
 }

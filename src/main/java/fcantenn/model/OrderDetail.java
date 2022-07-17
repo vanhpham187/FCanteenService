@@ -13,7 +13,7 @@ public class OrderDetail {
 
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "order_id", updatable = false, insertable = false)
-    private Order order;
+    private Order orders;
 
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id", updatable = false, insertable = false)

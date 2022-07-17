@@ -70,4 +70,21 @@ public class UserServiceImpl implements IUserService, UserDetailsService {
     private boolean usernameExists(String username) {
         return userRepository.findByUsername(username) != null;
     }
+
+    @Override
+    public void registerNewUserAccountStaff(User user) throws UserAlreadyExistException {
+        if (usernameExists(user.getUsername())) {
+            throw new UserAlreadyExistException("There is an account with that username: " + user.getUsername());
+        }
+        saveUserStaff(user);
+    }
+
+    private void saveUserStaff(User user) {
+        user.setPassword(encoder.encode(user.getPassword()));
+        List<Role> roles = new ArrayList<>();
+        Role role = roleRepository.findByName("ROLE_STAFF");
+        roles.add(role);
+        user.setRoles(roles);
+        userRepository.save(user);
+    }
 }

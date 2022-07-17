@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Embeddable
 public class OrderDetailKey implements Serializable {
     @Column(name = "order_id")
-    int order_id;
+    int orders_id;
 
     @Column(name = "user_id")
     int user_id;

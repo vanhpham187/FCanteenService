@@ -10,4 +10,6 @@ public interface IUserService extends UserDetailsService {
     User findByUsername(String email);
 
     void registerNewUserAccount(User user) throws UserAlreadyExistException;
+    void registerNewUserAccountStaff(User user) throws UserAlreadyExistException;
+
 }
