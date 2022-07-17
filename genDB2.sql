@@ -136,7 +136,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[orders](
 	[order_id] [int] IDENTITY(1,1) NOT NULL,
-	[ammount] [money] NULL,
+	[amount] [money] NULL,
 	[date_time] [datetime] NULL,
 	[note] [varchar](1000) NULL,
 PRIMARY KEY CLUSTERED 
