@@ -1,12 +1,13 @@
 USE [master]
+DROP DATABASE IF EXISTS [test_db]
 GO
 /****** Object:  Database [test_db]    Script Date: 7/17/2022 9:15:40 PM ******/
 CREATE DATABASE [test_db]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'test_db', FILENAME = N'D:\SSMS\MSSQL15.MSSQLSERVER\MSSQL\DATA\test_db.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+( NAME = N'test_db', FILENAME = N'D:\SQL\test_db.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'test_db_log', FILENAME = N'D:\SSMS\MSSQL15.MSSQLSERVER\MSSQL\DATA\test_db_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'test_db_log', FILENAME = N'D:\SQL\test_db_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
  WITH CATALOG_COLLATION = DATABASE_DEFAULT
 GO
 ALTER DATABASE [test_db] SET COMPATIBILITY_LEVEL = 150
@@ -240,3 +241,18 @@ USE [master]
 GO
 ALTER DATABASE [test_db] SET  READ_WRITE 
 GO
+use [test_db]
+go
+INSERT INTO [users] (first_name, last_name,username, password, email, phone, address)
+Values('Anh', 'Pham', 'latdat', '$2a$10$4/1Gz0I/t.TeRRaqU1QXWeQcC03vfCaLbMb8FEaC7ICh4nbVYGcTq', 'anhptvhe150038@fpt.edu.vn', '0987654321', 'Hai Duong'),
+('Phuong', 'Nguyen', 'phuongnh', '$2a$10$4/1Gz0I/t.TeRRaqU1QXWeQcC03vfCaLbMb8FEaC7ICh4nbVYGcTq', 'phuongnhhe150172@fpt.edu.vn', '0987654321', 'Ha Noi')
+GO
+INSERT INTO [roles] (id, name)
+VALUES(1,'ROLE_ADMIN'),
+(2,'ROLE_USER')
+GO
+INSERT INTO users_roles(user_id, role_id)
+VALUES(1, 1),
+(2, 2)
+go
+use master
