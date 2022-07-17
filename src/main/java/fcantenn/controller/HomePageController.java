@@ -23,4 +23,8 @@ public class HomePageController {
         model.addAttribute("user", user);
         return "staffPage";
     }
+    @GetMapping(value = "/managerHome")
+    public String ShowManagerHomePage(){
+        return "managerHomePage";
+    }
 }
