@@ -38,11 +38,11 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
         User user = userService.findByUsername(username);
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         authorities.forEach(authority -> {
-            if (authority.getAuthority().equals("ROLE_USER")) {
+            if (authority.getAuthority().equals("ROLE_MANAGER")) {
                 try {
-                    session.setAttribute("role","USER");
+                    session.setAttribute("role","MANAGER");
                     session.setAttribute("userInformation",user);
-                    redirectStrategy.sendRedirect(request, response, "/userHome");
+                    redirectStrategy.sendRedirect(request, response, "/managerHome");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -61,6 +61,15 @@ public class SimpleAuthenticationSuccessHandler implements AuthenticationSuccess
                     session.setAttribute("role","STAFF");
                     session.setAttribute("userInformation",user);
                     redirectStrategy.sendRedirect(request, response, "/staffHome");
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    session.setAttribute("role","STUDENT");
+                    session.setAttribute("userInformation",user);
+                    redirectStrategy.sendRedirect(request, response, "/userHome");
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
