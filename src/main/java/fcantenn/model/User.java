@@ -41,6 +41,10 @@ public class User {
     @Column(name = "salary", nullable = true)
     private Float salary;
 
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "store_id", updatable = false, insertable = false)
+    private Store store;
+
     @Column(name = "balance", nullable = true)
     private Float balance;
 
@@ -58,4 +62,28 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Collection<OrderDetail> orderDetails;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Float getBalance() {
+        return balance;
+    }
+
+    public Float getSalary() {
+        return salary;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getFullName() {
+        return first_name+ ' '+last_name;
+    }
 }
