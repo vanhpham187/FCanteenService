@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="common/header :: common-header" />
+<body>
+    <div th:replace="common/navbar :: common-navbar" />
+    <div style="min-height: 1200px;padding: 50px">
+        <form th:action="@{/admin/EditAccount}" method="post" th:object="${editUser}">
+            <div style="width: 30%">
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon1">Id</span>
+                    <input readonly th:field="*{id}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon2">First Name</span>
+                    <input th:field="*{first_name}" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon3">Last Name</span>
+                    <input th:field="*{last_name}" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon4">User Name</span>
+                    <input readonly th:field="*{username}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon5">Email</span>
+                    <input th:field="*{email}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon6">Phone</span>
+                    <input  th:field="*{phone}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon7">Address</span>
+                    <input  th:field="*{address}" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <div class="input-group mb-3" >
+                    <span class="input-group-text" id="basic-addon8">Salary</span>
+                    <input th:field="*{salary}" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" th:value="${editUser.getId()}">
+                </div>
+                <input class="btn btn-success" type="submit" value="Edit">
+            </div>
+
+        </form>
+    </div>
+    <footer th:replace="common/footer :: footer-script"/>
+    </body>
+</html>

@@ -42,8 +42,8 @@
                             <td th:text="${useritem.getBalance()}"/>
                             <td th:text="${useritem.getStore()}"/>
                             <td>
-                                <a th:href="@{/adminEditAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a th:href="@{/adminDeleteAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                <a th:href="@{/admin/EditAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a th:href="@{/admin/DeleteAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                             </td>
                         </tr>
 <!--                       ITEM-->

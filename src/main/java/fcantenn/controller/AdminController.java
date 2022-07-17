@@ -42,7 +42,7 @@ public class AdminController {
             return mav;
         }
     }
-    @GetMapping(value = "/adminManageAccount")
+    @GetMapping(value = "/admin/ManageAccount")
     public String manageAccount(Model model){
         User user = new User();
         model.addAttribute("user", user);
@@ -50,15 +50,23 @@ public class AdminController {
         model.addAttribute("allUser",userList);
         return "admin_manageAccount";
     }
-    @GetMapping(value = "/adminEditAccount")
-    public String editAccount(Model model){
+    @GetMapping(value = "/admin/EditAccount/{id}")
+    public String editAccount(@PathVariable(required=true,name="id") String id,Model model){
         User user = new User();
         model.addAttribute("user", user);
+        User editUser=userRepository.getUserById(Integer.parseInt(id));
+        model.addAttribute("editUser",editUser);
         return "admin_editAccount";
     }
-    @GetMapping(value = "/adminDeleteAccount/{id}")
-    public String deleteAccount(@PathVariable(required=false,name="id") String id, Model model){
+    @PostMapping(value = "/admin/EditAccount")
+    public ModelAndView editAccount(HttpServletRequest request,@ModelAttribute("editUser") User user) throws Exception{
+        ModelAndView mav = new ModelAndView("admin_editAccount");
+        userRepository.save(user);
+        return new ModelAndView("redirect:/admin/ManageAccount");
+    }
+    @GetMapping(value = "/admin/DeleteAccount/{id}")
+    public String deleteAccount(@PathVariable(required=true,name="id") String id, Model model){
         userRepository.deleteById(Integer.parseInt(id));
-        return "redirect:/adminManageAccount";
+        return "redirect:/admin/ManageAccount";
     }
 }
