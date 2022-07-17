@@ -38,6 +38,12 @@ public class User {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "salary", nullable = true)
+    private Float salary;
+
+    @Column(name = "balance", nullable = true)
+    private Float balance;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "users_roles",
@@ -46,4 +52,10 @@ public class User {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
     private Collection<Role> roles;
+
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
+    private Collection<Store> stores;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Collection<OrderDetail> orderDetails;
 }
