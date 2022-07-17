@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="common/header :: common-header" />
+<body>
+<div th:replace="common/navbar :: common-navbar" />
+<div style="min-height: 1200px; padding:25px">
+    <div class="p-10 bg-surface-secondary">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h6>Account</h6>
+
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-nowrap">
+                        <thead class="table-light">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col">Balance</th>
+                            <th scope="col">Store</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+<!--                        ITEM-->
+                        <tr th:each="useritem : ${allUser}">
+                            <td th:text="${useritem.getId()}"/>
+                            <td th:text="${useritem.getFirst_name()}"/>
+                            <td th:text="${useritem.getLast_name()}"/>
+                            <td th:text="${useritem.getUsername()}"/>
+                            <td th:text="${useritem.getEmail()}"/>
+                            <td th:text="${useritem.getPhone()}"/>
+                            <td th:text="${useritem.getAddress()}"/>
+                            <td th:text="${useritem.getSalary()}"/>
+                            <td th:text="${useritem.getBalance()}"/>
+                            <td th:text="${useritem.getStore()}"/>
+                            <td>
+                                <a th:href="@{/adminEditAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a th:href="@{/adminDeleteAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                            </td>
+                        </tr>
+<!--                       ITEM-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="common/footer :: footer-script"/>
+</body>
+</html>
