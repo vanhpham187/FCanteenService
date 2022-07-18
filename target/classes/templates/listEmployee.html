@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="common/header :: common-header" />
+<body>
+<div th:replace="common/navbar :: common-navbar" />
+<div style="min-height: 1200px; padding:25px">
+  <div class="p-10 bg-surface-secondary">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1 style="text-align: center">LIST EMPLOYEE</h1>
+
+        </div>
+        <div class="table-responsive">
+          <a th:href="@{/admin/employee/0}" type="button" class="btn btn-warning"><i class="fa-solid fa-plus"></i></a>
+          <table class="table table-hover table-nowrap">
+            <thead class="table-light">
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Employee Name</th>
+              <th scope="col">Date Birth</th>
+              <th scope="col">Phone</th>
+              <th scope="col">ID number</th>
+              <th scope="col">Salary hours</th>
+              <th scope="col">Total hours</th>
+
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--                        ITEM-->
+            <tr th:each="useritem : ${employeeList}">
+              <td th:text="${useritem.getId()}"/>
+              <td th:text="${useritem.getName()}"/>
+              <td th:text="${useritem.getDate_birth()}"/>
+              <td th:text="${useritem.getPhone()}"/>
+              <td th:text="${useritem.getId_number()}"/>
+              <td th:text="${useritem.getSalary()}"/>
+              <td th:text="${useritem.getTotal_hours()}"/>
+
+              <td>
+                <a th:href="@{/admin/employee/{id}(id=${useritem.getId()})}" type="button" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a th:href="@{/admin/deleteEmployee/{id}(id=${useritem.getId()})}" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+              </td>
+            </tr>
+            <!--                       ITEM-->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer th:replace="common/footer :: footer-script"/>
+</body>
+</html>
