@@ -126,7 +126,6 @@ public class AdminController {
         if(session.getAttribute("role")==null) return new ModelAndView("redirect:/login");
         String role = (String)session.getAttribute("role") ;
         if (role !="ADMIN") return new ModelAndView( "redirect:/home");
-        ModelAndView mav = new ModelAndView("admin_editAccount");
         Kiosk kioskU=kioskRepository.getById(kiosk.getKiosk_id());
         kioskU.setLocation(kiosk.getLocation());
         kioskU.setOwner_name(kiosk.getOwner_name());
@@ -143,5 +142,26 @@ public class AdminController {
         if (role !="ADMIN") return "redirect:/home";
         kioskRepository.deleteById(Integer.parseInt(id));
         return "redirect:/admin/ManageKiosk";
+    }
+    @GetMapping(value = "/admin/AddKiosk")
+    public String addKiosk(HttpServletRequest request,Model model){
+        HttpSession session = request.getSession();
+        if(session.getAttribute("role")==null) return "redirect:/login";
+        String role = (String)session.getAttribute("role") ;
+        if (role !="ADMIN") return "redirect:/home";
+        User user = new User();
+        model.addAttribute("user", user);
+        Kiosk kiosk=new Kiosk();
+        model.addAttribute("kiosk",kiosk);
+        return "admin_addKiosk";
+    }
+    @PostMapping(value = "/admin/AddKiosk")
+    public ModelAndView addKiosk(HttpServletRequest request,@ModelAttribute("kiosk") Kiosk kiosk) throws Exception{
+        HttpSession session = request.getSession();
+        if(session.getAttribute("role")==null) return new ModelAndView("redirect:/login");
+        String role = (String)session.getAttribute("role") ;
+        if (role !="ADMIN") return new ModelAndView( "redirect:/home");
+        kioskRepository.save(kiosk);
+        return new ModelAndView("redirect:/admin/ManageKiosk");
     }
 }
