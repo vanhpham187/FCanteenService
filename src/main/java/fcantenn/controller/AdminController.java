@@ -148,7 +148,7 @@ public class AdminController {
         HttpSession session = request.getSession();
         if(session.getAttribute("role")==null) return "redirect:/login";
         String role = (String)session.getAttribute("role") ;
-        if (role !="ADMIN") return "redirect:/home";
+        if (role !="ADMIN") return "redirect:/login";
         User user = new User();
         model.addAttribute("user", user);
         Kiosk kiosk=new Kiosk();
