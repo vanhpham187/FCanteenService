@@ -22,9 +22,6 @@
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Salary</th>
-                            <th scope="col">Balance</th>
-                            <th scope="col">Store</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -38,9 +35,6 @@
                             <td th:text="${useritem.getEmail()}"/>
                             <td th:text="${useritem.getPhone()}"/>
                             <td th:text="${useritem.getAddress()}"/>
-                            <td th:text="${useritem.getSalary()}"/>
-                            <td th:text="${useritem.getBalance()}"/>
-                            <td th:text="${useritem.getStore()}"/>
                             <td>
                                 <a th:href="@{/admin/EditAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a th:href="@{/admin/DeleteAccount/{id}(id=${useritem.getId()})}" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
