@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head th:replace="common/header :: common-header" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="common/navbar :: common-navbar" />
+<div class="container">
+<h1 style="text-align: center">LIST INGREDIENT</h1>
+  <a th:href="@{/ingredient/0}" type="button" class="btn btn-warning" ><i class="fa-solid fa-plus"></i></a>
+<table class="table table-sm">
+  <tr>
+    <th>Name</th>
+    <th>Day bought</th>
+    <th>Quantity</th>
+    <th>Unit</th>
+    <th>Unit price</th>
+    <th>Total price</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr th:each="item :${ingredientList}">
+    <td th:text="${item.getName()}"></td>
+    <td th:text="${#dates.format(item.getDay_bought(), 'dd/MM/yyyy')}"></td>
+    <td th:text="${item.getQuantity()}"></td>
+    <td th:text="${item.getUnit().getId()}"></td>
+    <td th:text="${item.getPrice()}"></td>
+    <td th:text="${item.getPrice()*item.getQuantity()}"></td>
+    <td><a th:href="@{/ingredient/{id}(id=${item.getId()})}" type="button" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a> </td>
+    <td><a th:href="@{/deleteIngredient/{id}(id=${item.getId()})}" type="button" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+  </tr>
+</table>
+</div>
+</body>
+<footer th:replace="common/footer :: footer-script"/>
+</html>

@@ -27,4 +27,44 @@ public class Store {
 
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private Collection<Dish> dishes;
+
+    public int getStores_id() {
+        return stores_id;
+    }
+
+    public void setStores_id(int stores_id) {
+        this.stores_id = stores_id;
+    }
+
+    public String getHotline() {
+        return hotline;
+    }
+
+    public void setHotline(String hotline) {
+        this.hotline = hotline;
+    }
+
+    public User getManager() {
+        return manager;
+    }
+
+    public void setManager(User manager) {
+        this.manager = manager;
+    }
+
+    public Kiosk getKiosk() {
+        return kiosk;
+    }
+
+    public void setKiosk(Kiosk kiosk) {
+        this.kiosk = kiosk;
+    }
+
+    public Collection<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(Collection<Dish> dishes) {
+        this.dishes = dishes;
+    }
 }

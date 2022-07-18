@@ -255,4 +255,6 @@ INSERT INTO users_roles(user_id, role_id)
 VALUES(1, 1),
 (2, 2)
 go
+INSERT INTO [kiosk] ([location],[owner_name],[owner_phone],[rental_fee]) VALUES ('Khu 3 Canteen 1','Mr.A','0987654321',1000)
+INSERT INTO [kiosk] ([location],[owner_name],[owner_phone],[rental_fee]) VALUES ('Khu 1 Canteen 2','Mr.B','0123456789',2000)
 use master

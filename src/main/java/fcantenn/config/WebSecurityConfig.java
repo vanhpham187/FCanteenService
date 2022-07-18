@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").hasAnyAuthority("ROLE_USER")
                 .antMatchers("/").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/").hasAnyAuthority("ROLE_STAFF")
-                .antMatchers("/admin").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/admin/*").hasAuthority("ROLE_ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login").loginProcessingUrl("/login")
