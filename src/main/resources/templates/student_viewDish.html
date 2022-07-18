@@ -8,7 +8,7 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                    <h6>Choose store</h6>
+                    <h6>Choose dishes</h6>
 
                 </div>
                 <div class="table-responsive">
@@ -17,19 +17,18 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Hotline</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Image</th>
                         </tr>
                         </thead>
                         <tbody>
 <!--                        ITEM-->
-                        <tr th:each="useritem : ${allStore}">
-                            <td th:text="${useritem.getStores_id()}"/>
-                            <td th:text="${useritem.getKiosk().getOwner_name()}"/>
-                            <td th:text="${useritem.getHotline()}"/>
+                        <tr th:each="useritem : ${allDish}">
+                            <td th:text="${useritem.getDish_id()}"/>
+                            <td th:text="${useritem.getDish_name()}"/>
+                            <td th:text="${useritem.getDescription()}"/>
                             <td>
-                                <a th:href="@{/userHome/menu/{id}(id=${useritem.getStores_id()})}" type="button" class="btn btn-warning">
-                                    <i class="fa-solid fa-angles-right"></i></a>
-                                </td>
+                                <img th:src="@{${useritem.getImage_url()}}" alt="food" width="400" height="250"/> </td> 
                         </tr>
 <!--                       ITEM-->
                         </tbody>
