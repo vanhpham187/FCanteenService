@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="common/header :: common-header" />
+<body>
+<div th:replace="common/navbar :: common-navbar" />
+<div class="container">
+  <div class="row" style="justify-content: center">
+    <div style="min-height: 1200px;padding: 50px">
+      <form th:action="@{/admin/employee}" method="post" th:object="${employee}" style="display: flex;justify-content: center;text-align: center">
+        <div style="width: 50%;">
+          <h1>Employee</h1>
+          <div class="input-group mb-3" hidden>
+            <span class="input-group-text" id="basic-addon1">Id</span>
+            <input readonly th:field="*{id}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" >
+          </div>
+          <div class="input-group mb-3" >
+            <span class="input-group-text" id="basic-addon2">Name</span>
+            <input th:field="*{name}" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+          <div class="input-group mb-3" >
+            <span class="input-group-text" id="basic-addon3">Date Birth</span>
+            <input th:field="*{date_birth}" type="date" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+
+          <div class="input-group mb-3" >
+            <span class="input-group-text" id="basic-addon5">Phone</span>
+            <input th:field="*{phone}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+          <div class="input-group mb-3" >
+            <span class="input-group-text" id="basic-addon6">ID number</span>
+            <input  th:field="*{id_number}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+          <div class="input-group mb-3" >
+            <span class="input-group-text" id="basic-addon6">Salary</span>
+            <input  th:field="*{salary}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+          <div class="input-group mb-3" >
+            <span class="input-group-text" id="basic-addon6">Total Hours</span>
+            <input  th:field="*{total_hours}" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>
+          </div>
+
+          <input class="btn btn-success" type="submit" value="Edit">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<footer th:replace="common/footer :: footer-script"/>
+</body>
+</html>
