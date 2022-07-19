@@ -11,13 +11,16 @@
 <!--      UL-->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" th:href="@{/home}">Home</a>
+          <a class="nav-link active" aria-current="page" th:href="@{/userHome}">Home</a>
         </li>
         <li th:if="${session.role=='ADMIN'}" class="nav-item">
           <a class="nav-link active" aria-current="page" th:href="@{/admin/ManageAccount}">Account</a>
         </li>
         <li th:if="${session.role=='ADMIN'}" class="nav-item">
           <a class="nav-link active" aria-current="page" th:href="@{/admin/ManageKiosk}">Kiosk</a>
+        </li>
+        <li th:if="${session.role=='STUDENT'}" class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/userHome/menu}">Menu</a>
         </li>
         <li th:if="${session.userInformation!=null}" class="nav-item dropdown">
           <a th:text="${'Hello '+session.userInformation.getUsername()}" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
