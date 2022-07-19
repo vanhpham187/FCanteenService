@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dish Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="main-navigation" th:insert="~{/common/navbar :: div}"></div>
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">
+        <!-- Top navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <div class="container-fluid">
+                <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container-fluid">
+            <form th:action="@{/menu}" method="post" th:object="${dishList}">
+                <table>
+                    <th>
+                    <td>Dish Name</td>
+                    <td>Image</td>
+                    <td>Description</td>
+                    </th>
+                    <tr th:each="dish: ${dishList}">
+                        <td></td>
+                        <td class="mb-4" th:text="${dish.getDish_name()}"></td>
+                        <td class="mb-4" ><img th:src="${dish.getImage_url()}"></td>
+                        <td class="mb-4" th:text="${dish.getDescription()}"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script th:src="@{/js/scripts.js}"></script>
+</body>
+<style>
+    table {
+        width: 750px;
+        border-collapse: collapse;
+        margin:50px auto;
+    }
+
+    /* Zebra striping */
+    tr:nth-of-type(odd) {
+        background: #eee;
+    }
+
+    th {
+        background: #3498db;
+        color: white;
+        font-weight: bold;
+    }
+
+    td, th {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+        font-size: 18px;
+    }
+</style>
+</html>

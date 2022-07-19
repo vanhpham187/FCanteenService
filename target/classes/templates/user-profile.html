@@ -36,13 +36,6 @@
     <head th:replace="common/header :: common-header" />
 <body>
 <div th:replace="common/navbar :: common-navbar" />
-<div class="header">
-    <div class="logo-menu">
-        <div class="main-navigation" th:insert="~{/components/navbar :: navbar1}"></div>
-
-        <!-- Off Canvas Navigation -->
-    </div>
-</div>
 <!-- Header Section End -->
 
 <!-- Page Header Start -->
@@ -52,7 +45,6 @@
             <div class="col-md-12">
                 <div class="breadcrumb-wrapper">
                     <h2 class="product-title " style="color: #ff6470">Profile</h2>
-
                 </div>
             </div>
         </div>
@@ -63,27 +55,9 @@
 <div id="content" class="my-account">
     <div class="container">
         <div class="row">
-            <th:block th:insert="~{/components/inner-box :: inner-box}"></th:block>
-
             <div class="col-md-8 col-sm-8 col-xs-12">
                 <div class="inner-box my-resume"
                      style="box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;">
-                    <div class="author-resume">
-                        <div class="author-info col-md-8 col-sm-8">
-                            <h2 th:utext="${session.userInformation.getFullName()}"></h2>
-                            <div class="social-link">
-                                <a class="twitter" target="_blank" data-original-title="twitter" href="#"
-                                   data-toggle="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a>
-                                <a class="facebook" target="_blank" data-original-title="facebook" href="#"
-                                   data-toggle="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a>
-                                <a class="google" target="_blank" data-original-title="google-plus" href="#"
-                                   data-toggle="tooltip" data-placement="top"><i class="fa fa-google"></i></a>
-                                <a class="linkedin" target="_blank" data-original-title="linkedin" href="#"
-                                   data-toggle="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
                     <div class="about-me item">
                         <h3>Email<i class="ti-pencil"></i></h3>
                         <p th:utext="${session.userInformation.getEmail()}"></p>
@@ -92,6 +66,10 @@
                     <div class="education item">
                         <h3>Phone<i class="ti-pencil"></i></h3>
                         <p th:utext="${session.userInformation.getPhone()}"><span><i class="ti-phone"></i></span></p>
+                    </div>
+                    <div class="about-me item">
+                        <h3>Address<i class="ti-pencil"></i></h3>
+                        <p th:utext="${session.userInformation.getAddress()}"></p>
                     </div>
                     <div class="education item">
                         <h3>Balance<i class="ti-pencil"></i></h3>
@@ -108,15 +86,21 @@
                             <span class="close">&times;</span>
                             <div id="cd-signup" class="is-selected">
                                 <div class="page-login-form register">
-                                    <form class="form">
+                                    <form class="form" method="post"  action="/update-profile">
                                         <div class="form-group is-empty">
                                             <div class="input-icon">
-                                                <input th:name="fullName" th:id="fullName" type="text"
-                                                       class="form-control" name="fullName"
-                                                       placeholder="Username" th:value="${userinfo.getFullName()}">
+                                                <input th:name="firstName" th:id="firstName" type="text"
+                                                       class="form-control" name="firstName"
+                                                       placeholder="First Name" th:value="${userinfo.getFirst_name()}">
                                             </div>
                                             <span class="material-input"></span></div>
-
+                                        <div class="form-group is-empty">
+                                            <div class="input-icon">
+                                                <input th:name="lastName" th:id="lastName" type="text"
+                                                       class="form-control" name="lastName"
+                                                       placeholder="Last Name" th:value="${userinfo.getLast_name()}">
+                                            </div>
+                                            <span class="material-input"></span></div>
                                         <div class="form-group is-empty">
                                             <div class="input-icon">
                                                 <input th:name="phone" th:id="phone" type="text" class="form-control"
@@ -124,7 +108,21 @@
                                                        placeholder="Phone" th:value="${userinfo.getPhone()}">
                                             </div>
                                         </div>
-                                        <button onclick="updateProfile()" class="btn btn-common log-btn">Update</button>
+                                        <div class="form-group is-empty">
+                                            <div class="input-icon">
+                                                <input th:name="email" th:id="email" type="text" class="form-control"
+                                                       name="email"
+                                                       placeholder="Email" th:value="${userinfo.getEmail()}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group is-empty">
+                                            <div class="input-icon">
+                                                <input th:name="address" th:id="address" type="text" class="form-control"
+                                                       name="address"
+                                                       placeholder="Address" th:value="${userinfo.getAddress()}">
+                                            </div>
+                                        </div>
+                                        <button  type="submit" class="btn btn-common log-btn">Update</button>
                                     </form>
                                 </div>
                             </div>
@@ -136,7 +134,7 @@
     </div>
 </div>
 <!-- Footer Section Start -->
-<th:block th:insert="~{/components/footer :: footer}"></th:block>
+<th:block th:insert="~{/common/footer :: footer}"></th:block>
 <!-- Footer Section End -->
 <footer th:replace="common/footer :: footer-script"/>
 <!-- Main JS  -->
